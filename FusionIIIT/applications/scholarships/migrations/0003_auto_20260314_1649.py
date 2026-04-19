@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
         ('globals', '0005_moduleaccess_database'),
         ('programme_curriculum', '0032_auto_20260314_1649'),
         ('academic_information', '0002_auto_20260314_1649'),
-        ('scholarships', '0002_auto_20250201_2228'),
+        ('scholarships', '0002_mcmapplication'),
     ]
 
     operations = [

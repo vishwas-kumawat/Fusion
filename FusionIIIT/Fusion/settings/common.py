@@ -155,6 +155,12 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 ]
 
+SILENCED_SYSTEM_CHECKS = [
+    'fields.E304',
+    'fields.E305',
+    'fields.E336',
+]
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

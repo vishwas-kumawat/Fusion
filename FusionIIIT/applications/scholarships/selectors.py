@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 """
-selectors.py – Award & Scholarship Module
+selectors.py ΓÇô Award & Scholarship Module
 All database READ operations live here. No business logic.
 Views and services must call these functions instead of using
 .objects directly.
@@ -23,9 +22,9 @@ from .models import (
 )
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # ScholarshipType Selectors
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_all_scholarship_types():
     """Return all active scholarship types."""
@@ -44,9 +43,9 @@ def get_scholarship_types_by_category(category: str):
     return ScholarshipType.objects.filter(is_active=True, category=category)
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # ScholarshipApplication Selectors
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_all_applications():
     """Return all scholarship applications with related data."""
@@ -100,9 +99,9 @@ def application_exists(student, scholarship_type, academic_year: str, semester: 
     ).exists()
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # Award Selectors
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_all_awards():
     """Return all active awards."""
@@ -119,9 +118,9 @@ def get_awards_by_category(category: str):
     return Award.objects.filter(is_active=True, category=category)
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # AwardRecipient Selectors
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_all_award_recipients():
     """Return all award recipient records."""
@@ -145,9 +144,9 @@ def recipient_exists(award, student, academic_year: str) -> bool:
     ).exists()
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # MeritList Selectors
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_merit_list(batch, academic_year: str, semester: int):
     """Return a MeritList for a batch/year/semester or raise DoesNotExist."""
@@ -171,10 +170,10 @@ def merit_list_exists(batch, academic_year: str, semester: int) -> bool:
     ).exists()
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # Cross-Module Eligibility Selectors
 # (read-only queries against global / other app tables)
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 def get_student_by_id(student_id):
     """Return a Student instance or raise DoesNotExist."""
@@ -260,49 +259,3 @@ def get_eligible_students_for_scholarship(scholarship_type):
         qs = qs.filter(category__in=valid_cats)
 
     return qs
-=======
-from django.utils import timezone
-from applications.academic_information.models import Student
-from .models import Award_and_scholarship, Release, Application
-
-
-def get_student_by_user(user):
-    """Safely retrieves the Student record for the authenticated user."""
-    if not user or not user.is_authenticated:
-        return None
-
-    # User -> ExtraInfo -> Student relation in Fusion data model.
-    return Student.objects.select_related(
-        "id__user", "id__department", "batch_id__discipline"
-    ).filter(id__user=user).first()
-
-
-def get_active_releases(student_batch: str, student_programme: str):
-    """Retrieves scholarship releases that are currently open for a student's demographic."""
-    today = timezone.now().date()
-    return Release.objects.filter(
-        startdate__lte=today,
-        enddate__gte=today,
-        batch__iexact=student_batch,
-        programme__iexact=student_programme,
-        notif_visible=True
-    ).select_related('award')
-
-
-def get_student_applications(student_id: str):
-    """Retrieves all applications submitted by a specific student."""
-    return Application.objects.filter(student__id=student_id).select_related('award')
-
-
-def get_all_applications_for_convener(status_filter=None):
-    """Retrieves applications for the convener, optionally filtered by status."""
-    qs = Application.objects.select_related('student', 'award')
-    if status_filter:
-        qs = qs.filter(status=status_filter)
-    return qs
-
-
-def get_application_by_id(application_id: int):
-    """Retrieves a single application by its primary key."""
-    return Application.objects.select_related('student', 'award').filter(id=application_id).first()
->>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e

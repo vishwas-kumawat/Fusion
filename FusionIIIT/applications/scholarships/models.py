@@ -1,5 +1,6 @@
 from django.db import models
 from applications.academic_information.models import Student
+from applications.globals.models import ExtraInfo
 
 class AwardTypeChoices(models.TextChoices):
     MCM = 'MCM', 'Merit-cum-Means Scholarship'
@@ -428,7 +429,6 @@ class MeritListRecord(models.Model):
 
 
 
-<<<<<<< HEAD
     class Meta:
         db_table = 'Director_gold'
 
@@ -438,9 +438,9 @@ from applications.programme_curriculum.models import Batch, Discipline, Programm
 
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # Choices (TextChoices / IntegerChoices)
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 class ScholarshipCategory(models.TextChoices):
     MERIT    = "MERIT",    "Merit-based"
@@ -481,9 +481,9 @@ class FrequencyChoice(models.TextChoices):
     ONE_TIME  = "ONE_TIME",  "One-time"
 
 
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 # Core Models
-# ─────────────────────────────────────────────
+# ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 class ScholarshipType(models.Model):
     """
@@ -554,7 +554,7 @@ class ScholarshipApplication(models.Model):
         ordering        = ["-application_date"]
 
     def __str__(self):
-        return f"{self.student.id} – {self.scholarship_type.name} ({self.academic_year})"
+        return f"{self.student.id} ΓÇô {self.scholarship_type.name} ({self.academic_year})"
 
 
 class Award(models.Model):
@@ -597,7 +597,7 @@ class AwardRecipient(models.Model):
         ordering        = ["-award_date"]
 
     def __str__(self):
-        return f"{self.student_id} – {self.award.name} ({self.academic_year})"
+        return f"{self.student_id} ΓÇô {self.award.name} ({self.academic_year})"
 
 
 class MeritList(models.Model):
@@ -615,7 +615,7 @@ class MeritList(models.Model):
         ordering        = ["-generated_date"]
 
     def __str__(self):
-        return f"Merit List – {self.batch} | {self.academic_year} Sem-{self.semester}"
+        return f"Merit List ΓÇô {self.batch} | {self.academic_year} Sem-{self.semester}"
 
 
 class MeritListEntry(models.Model):
@@ -632,7 +632,4 @@ class MeritListEntry(models.Model):
         ordering        = ["rank"]
 
     def __str__(self):
-        return f"Rank {self.rank} – {self.student_id} in {self.merit_list}"
-
-=======
->>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
+        return f"Rank {self.rank} ΓÇô {self.student_id} in {self.merit_list}"
