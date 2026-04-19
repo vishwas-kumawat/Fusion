@@ -145,7 +145,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
-    'semanticuiforms',
+    # 'semanticuiforms',
     'applications.feeds.apps.FeedsConfig',
     'pagedown',
     'markdown_deux',
