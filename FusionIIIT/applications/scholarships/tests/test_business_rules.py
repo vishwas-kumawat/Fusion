@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 test_business_rules.py — Business Rule tests for the SPACS Scholarship module.
 
@@ -630,3 +631,11 @@ class TestBR14_CatalogVersioning(BRTestBase):
         else:
             self._record_result(f"HTTP {response.status_code}", "Fail", str(response.data))
             self.fail(f"Expected 400/404/422, got {response.status_code}")
+=======
+1.add deadline chaneg for mcm,single parent,application awards 
+2.fix application form in awards
+3.map all tables of pg admin used in scholarship and awards module
+4.ensure both scholarship and awards module in proper final file struture for submission
+5.generate workflows,brs and ucs for both modules final
+
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e

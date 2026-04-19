@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.conf.urls import url, include
 
 from . import views
@@ -20,3 +21,18 @@ urlpatterns = [
     url(r'^updateEndDate/$', views.updateEndDate, name='updateEndDate'),
 
 ]
+=======
+from django.http import JsonResponse
+from django.urls import path
+
+
+def spacs_root(_request):
+    return JsonResponse({
+        'message': 'SPACS backend is active. Use /scholarships/api/ endpoints.'
+    })
+
+
+urlpatterns = [
+    path('', spacs_root, name='spacs_root'),
+]
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e

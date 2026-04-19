@@ -19,10 +19,16 @@ from applications.globals.models import (
 )
 from applications.academic_information.models import Student
 from applications.scholarships.models import (
+<<<<<<< HEAD
     Award_and_scholarship, Mcm, Release,
     ScholarshipType, ScholarshipApplication,
     Award, AwardRecipient,
     ApplicationStatus,
+=======
+    Award_and_scholarship, Release, Application,
+    McmApplication, SingleParentApplication,
+    ExtendedScholarshipType, ScholarshipApplication,
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
 )
 
 
@@ -39,7 +45,11 @@ class BaseModuleTestCase(TestCase):
         # ── Department ──────────────────────────────────────────────────────
         cls.dept = DepartmentInfo.objects.create(name='CSE')
 
+<<<<<<< HEAD
         # ── Student 1 (primary test student — eligible) ─────────────────────
+=======
+        # ── Student 1 (primary test student — high CPI, GEN) ───────────────
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         cls.student_user = User.objects.create_user(
             username='2021BCS001', password='test123',
             first_name='Test', last_name='Student',
@@ -70,6 +80,23 @@ class BaseModuleTestCase(TestCase):
             cpi=7.5, category='GEN',
         )
 
+<<<<<<< HEAD
+=======
+        # ── Student 3 (low CPI, for eligibility‐failure tests) ─────────────
+        cls.low_cpi_user = User.objects.create_user(
+            username='2021BCS003', password='test123',
+        )
+        cls.low_cpi_extra = ExtraInfo.objects.create(
+            user=cls.low_cpi_user, id='2021BCS003',
+            user_type='student', department=cls.dept,
+        )
+        cls.low_cpi_student = Student.objects.create(
+            id=cls.low_cpi_extra,
+            programme='B.Tech', batch=2021,
+            cpi=4.0, category='GEN',
+        )
+
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         # ── SPACS Assistant ─────────────────────────────────────────────────
         cls.assistant_user = User.objects.create_user(
             username='spacsassistant1', password='test123',
@@ -99,10 +126,17 @@ class BaseModuleTestCase(TestCase):
 
         # ── Designations & HoldsDesignation ─────────────────────────────────
         cls.assistant_desig = Designation.objects.create(
+<<<<<<< HEAD
             name='spacs_assistant', full_name='SPACS Assistant',
         )
         cls.convener_desig = Designation.objects.create(
             name='spacs_convener', full_name='SPACS Convenor',
+=======
+            name='spacsassistant', full_name='SPACS Assistant',
+        )
+        cls.convener_desig = Designation.objects.create(
+            name='spacsconvenor', full_name='SPACS Convenor',
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         )
         HoldsDesignation.objects.create(
             user=cls.assistant_user,
@@ -117,16 +151,25 @@ class BaseModuleTestCase(TestCase):
 
         # ── Legacy award + open release window ──────────────────────────────
         cls.test_award = Award_and_scholarship.objects.create(
+<<<<<<< HEAD
             award_name='Test MCM Award',
             catalog='Test scholarship for MCM',
         )
         cls.test_release = Release.objects.create(
             award='Merit-cum-Means Scholarship',
+=======
+            award_name='Test MCM Award', award_type='MCM',
+            catalog='Test scholarship for MCM',
+        )
+        cls.test_release = Release.objects.create(
+            award=cls.test_award,
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
             startdate=timezone.now().date() - timedelta(days=1),
             enddate=timezone.now().date() + timedelta(days=30),
             batch='2021', programme='B.Tech',
         )
 
+<<<<<<< HEAD
         # ── ScholarshipType (active) ────────────────────────────────────────
         cls.active_scholarship = ScholarshipType.objects.create(
             name='Test Merit Scholarship',
@@ -150,6 +193,27 @@ class BaseModuleTestCase(TestCase):
             is_active=False,
             amount=Decimal('10000.00'),
             frequency='ANNUAL',
+=======
+        # ── Extended Scholarship Type (active) ──────────────────────────────
+        cls.active_scholarship = ExtendedScholarshipType.objects.create(
+            name='Test Merit Scholarship',
+            category='MERIT',
+            description='Test merit-based scholarship',
+            eligibility_criteria='CPI >= 8.0',
+            minimum_cgpa=8.0,
+            is_active=True,
+            amount=Decimal('50000.00'),
+        )
+
+        # ── Extended Scholarship Type (inactive) ────────────────────────────
+        cls.inactive_scholarship = ExtendedScholarshipType.objects.create(
+            name='Inactive Scholarship',
+            category='MERIT',
+            description='Deactivated scholarship',
+            eligibility_criteria='CPI >= 6.0',
+            minimum_cgpa=6.0,
+            is_active=False,
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         )
 
     # ── Per-test setup ──────────────────────────────────────────────────────
@@ -178,6 +242,12 @@ class BaseModuleTestCase(TestCase):
     def login_as_student2(self):
         self.client.force_authenticate(user=self.student_user_2)
 
+<<<<<<< HEAD
+=======
+    def login_as_low_cpi_student(self):
+        self.client.force_authenticate(user=self.low_cpi_user)
+
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
     def login_as_assistant(self):
         self.client.force_authenticate(user=self.assistant_user)
 
@@ -196,20 +266,29 @@ class BaseModuleTestCase(TestCase):
         response = self.client.get(path, format='json')
         if expected_status is not None:
             self.assertEqual(response.status_code, expected_status,
+<<<<<<< HEAD
                              f"GET {path} -> {response.status_code}: {getattr(response, 'data', '')}")
+=======
+                             f"GET {path} → {response.status_code}: {getattr(response, 'data', '')}")
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         return response
 
     def api_post(self, path, data=None, expected_status=201, fmt='json'):
         response = self.client.post(path, data or {}, format=fmt)
         if expected_status is not None:
             self.assertEqual(response.status_code, expected_status,
+<<<<<<< HEAD
                              f"POST {path} -> {response.status_code}: {getattr(response, 'data', '')}")
+=======
+                             f"POST {path} → {response.status_code}: {getattr(response, 'data', '')}")
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         return response
 
     def api_patch(self, path, data=None, expected_status=200, fmt='json'):
         response = self.client.patch(path, data or {}, format=fmt)
         if expected_status is not None:
             self.assertEqual(response.status_code, expected_status,
+<<<<<<< HEAD
                              f"PATCH {path} -> {response.status_code}: {getattr(response, 'data', '')}")
         return response
 
@@ -218,6 +297,16 @@ class BaseModuleTestCase(TestCase):
         if expected_status is not None:
             self.assertEqual(response.status_code, expected_status,
                              f"DELETE {path} -> {response.status_code}: {getattr(response, 'data', '')}")
+=======
+                             f"PATCH {path} → {response.status_code}: {getattr(response, 'data', '')}")
+        return response
+
+    def api_put(self, path, data=None, expected_status=200, fmt='json'):
+        response = self.client.put(path, data or {}, format=fmt)
+        if expected_status is not None:
+            self.assertEqual(response.status_code, expected_status,
+                             f"PUT {path} → {response.status_code}: {getattr(response, 'data', '')}")
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         return response
 
     # ── Date helpers ────────────────────────────────────────────────────────
@@ -248,10 +337,67 @@ class BaseModuleTestCase(TestCase):
             f"{model.__name__} with {kwargs} should not exist",
         )
 
+<<<<<<< HEAD
     # ── ScholarshipApplication factory ───────────────────────────────────────
 
     def create_scholarship_application(self, student=None, scholarship=None,
                                        status='PENDING', **overrides):
+=======
+    # ── MCM Application factory ─────────────────────────────────────────────
+
+    def create_mcm_application(self, student=None, status='pending', **overrides):
+        """Create an McmApplication for testing."""
+        s = student or self.student
+        user = s.id.user
+        defaults = {
+            'student': s,
+            'email': f'{user.username}@test.com',
+            'student_full_name': f'{user.first_name} {user.last_name}'.strip() or user.username,
+            'roll_no': str(s.id),
+            'batch': str(s.batch),
+            'programme': s.programme,
+            'mobile_no': '9876543210',
+            'father_name': 'Father Name',
+            'mother_name': 'Mother Name',
+            'category': s.category,
+            'current_cpi': Decimal(str(s.cpi)),
+            'current_spi': Decimal(str(s.cpi)),
+            'annual_income': '300000',
+            'postal_address': '123 Test Street',
+            'status': status,
+        }
+        defaults.update(overrides)
+        return McmApplication.objects.create(**defaults)
+
+    # ── Single Parent Application factory ────────────────────────────────────
+
+    def create_single_parent_application(self, student=None, status='pending', **overrides):
+        """Create a SingleParentApplication for testing."""
+        s = student or self.student
+        user = s.id.user
+        defaults = {
+            'student': s,
+            'email': f'{user.username}@test.com',
+            'student_full_name': f'{user.first_name} {user.last_name}'.strip() or user.username,
+            'roll_no': str(s.id),
+            'batch': str(s.batch),
+            'programme': s.programme,
+            'mobile_no': '9876543210',
+            'postal_address': '123 Test Street',
+            'father_name': 'Father Name',
+            'mother_name': 'Mother Name',
+            'category': s.category,
+            'current_cpi': Decimal(str(s.cpi)),
+            'status': status,
+        }
+        defaults.update(overrides)
+        return SingleParentApplication.objects.create(**defaults)
+
+    # ── Extended Scholarship Application factory ─────────────────────────────
+
+    def create_ext_scholarship_app(self, student=None, scholarship=None,
+                                   status='PENDING', **overrides):
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
         """Create a ScholarshipApplication for testing."""
         s = student or self.student
         sch = scholarship or self.active_scholarship
@@ -260,12 +406,16 @@ class BaseModuleTestCase(TestCase):
             'scholarship_type': sch,
             'academic_year': '2024-25',
             'semester': 1,
+<<<<<<< HEAD
             'category_at_application': s.category,
+=======
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
             'status': status,
         }
         defaults.update(overrides)
         return ScholarshipApplication.objects.create(**defaults)
 
+<<<<<<< HEAD
     # ── Award factory ────────────────────────────────────────────────────────
 
     def create_test_award(self, **overrides):
@@ -281,6 +431,8 @@ class BaseModuleTestCase(TestCase):
         defaults.update(overrides)
         return Award.objects.create(**defaults)
 
+=======
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
     # ── Result recording (used by runner.py) ────────────────────────────────
 
     def _record_result(self, actual, status, evidence=''):
@@ -302,6 +454,7 @@ class BaseModuleTestCase(TestCase):
 
     def _all_steps_passed(self):
         return all(s['passed'] for s in self._steps)
+<<<<<<< HEAD
 
 
 class UCTestBase(BaseModuleTestCase):
@@ -317,3 +470,5 @@ class BRTestBase(BaseModuleTestCase):
 class WFTestBase(BaseModuleTestCase):
     """Marker base class for Workflow tests."""
     pass
+=======
+>>>>>>> 98291d374ebf7ff621d59f26fe250a2426b0747e
